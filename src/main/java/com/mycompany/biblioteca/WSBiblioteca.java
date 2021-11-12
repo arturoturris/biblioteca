@@ -97,12 +97,32 @@ public class WSBiblioteca {
         return this.sendRequest("POST", path, WSBiblioteca.mapToJson(body));
     }
     
+    public WSResponse updateProd(String user, String pass, String isbn, HashMap<String,Object> producto) {
+        String path = "/updateProd" + isbn;
+        HashMap<String,Object> body = new HashMap<String,Object>();
+        
+        body.put("user", user);
+        body.put("pass", pass);
+        body.put("producto", WSBiblioteca.mapToJson(producto));
+        return this.sendRequest("PUT", path, WSBiblioteca.mapToJson(body));
+        
+    }
+    
+    public WSResponse deleteProd(String user, String pass, String isbn) {
+        String path = "/deleteProd" + isbn;
+        HashMap<String,Object> body = new HashMap<String,Object>();
+        
+        body.put("user", user);
+        body.put("pass", pass);
+        return this.sendRequest("DELETE", path, WSBiblioteca.mapToJson(body));
+    }
+    
     public static void main(String[] args) {
         WSBiblioteca client = new WSBiblioteca("https://wsbiblioteca.azurewebsites.net/");
         WSResponse response;
         
         //PRUEBA PARA getProd
-        response = client.getProd("pruebas1", "12345678a", "libros");
+        response = client.getDetails("pruebas1", "12345678a", "/LIB003");
         
         //PRUEBA PARA updateProd
 //        HashMap<String,Object> body = new HashMap<String,Object>();
