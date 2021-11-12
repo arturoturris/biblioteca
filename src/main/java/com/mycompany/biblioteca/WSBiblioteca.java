@@ -97,13 +97,13 @@ public class WSBiblioteca {
         return this.sendRequest("POST", path, WSBiblioteca.mapToJson(body));
     }
     
-    public WSResponse updateProd(String user, String pass, String isbn, HashMap<String,Object> producto) {
+    public WSResponse updateProd(String user, String pass, String isbn, HashMap<String,Object> detalles) {
         String path = "/updateProd" + isbn;
         HashMap<String,Object> body = new HashMap<String,Object>();
         
         body.put("user", user);
         body.put("pass", pass);
-        body.put("producto", WSBiblioteca.mapToJson(producto));
+        body.put("detalles", WSBiblioteca.mapToJson(detalles));
         return this.sendRequest("PUT", path, WSBiblioteca.mapToJson(body));
         
     }
@@ -122,18 +122,18 @@ public class WSBiblioteca {
         WSResponse response;
         
         //PRUEBA PARA getProd
-        response = client.getDetails("pruebas1", "12345678a", "/LIB003");
+        response = client.getDetails("pruebas1", "12345678a", "/LIB004");
         
         //PRUEBA PARA updateProd
-//        HashMap<String,Object> body = new HashMap<String,Object>();
-//        body.put("Autor", "Autor X");
-//        body.put("Descuento", true);
-//        body.put("Editorial", "Editorial X");
-//        body.put("Fecha", 2005);
-//        body.put("ISBN", "LIB004");
-//        body.put("Nombre", "Libro 4");
-//        body.put("Precio", (float)45.50);
-//        response = client.setProd("pruebas1", "12345678a", "libros", body);
+        /*HashMap<String,Object> body = new HashMap<String,Object>();
+        body.put("Autor", "Ejemplo de autor");
+        body.put("Descuento", true);
+        body.put("Editorial", "Editorial Ejemplar");
+        body.put("Fecha", 2666);
+        body.put("ISBN", "LIB004");
+        body.put("Nombre", "Libro 4");
+        body.put("Precio", (float)45.50);
+        response = client.updateProd("pruebas1", "12345678a", "/LIB004", body);*/
         
         //RESPUESTA DE LA SOLICITUD
         System.out.println(response.getCode());
