@@ -1,4 +1,4 @@
-package com.mycompany.biblioteca;
+package model;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
