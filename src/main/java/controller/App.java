@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+
 import model.Detalles;
 import model.WSBiblioteca;
 import model.WSResponse;

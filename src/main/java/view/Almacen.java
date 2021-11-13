@@ -80,16 +80,11 @@ public class Almacen extends javax.swing.JPanel {
         categoria = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         cmbBoxCategoria = new javax.swing.JComboBox<>();
-        jSeparator1 = new javax.swing.JSeparator();
+        botones = new javax.swing.JPanel();
         btnBuscar = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
         btnConsultar = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
         btnNuevo = new javax.swing.JLabel();
-        jSeparator6 = new javax.swing.JSeparator();
         btnModificar = new javax.swing.JLabel();
-        jSeparator7 = new javax.swing.JSeparator();
-        jSeparator8 = new javax.swing.JSeparator();
         btnEliminar = new javax.swing.JLabel();
         tblProductos = new view.template.Tabla();
 
@@ -158,7 +153,7 @@ public class Almacen extends javax.swing.JPanel {
 
         datosUsuario.add(contrasena);
 
-        margen.add(datosUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, 210));
+        margen.add(datosUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 160, 210));
 
         operaciones.setOpaque(false);
         operaciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -184,15 +179,15 @@ public class Almacen extends javax.swing.JPanel {
 
         operaciones.add(categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 34, 158, -1));
 
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator1.setPreferredSize(null);
-        operaciones.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 92, 170, 3));
+        botones.setOpaque(false);
+        botones.setLayout(new java.awt.GridLayout(5, 1, 0, 5));
 
         btnBuscar.setBackground(new java.awt.Color(73, 197, 147));
         btnBuscar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnBuscar.setText("Buscar");
+        btnBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuscar.setOpaque(true);
         btnBuscar.setPreferredSize(new java.awt.Dimension(170, 50));
@@ -204,17 +199,14 @@ public class Almacen extends javax.swing.JPanel {
                 btnBuscarMouseExited(evt);
             }
         });
-        operaciones.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 95, -1, 40));
-
-        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator2.setPreferredSize(null);
-        operaciones.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 135, 170, 3));
+        botones.add(btnBuscar);
 
         btnConsultar.setBackground(new java.awt.Color(73, 197, 147));
         btnConsultar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         btnConsultar.setForeground(new java.awt.Color(255, 255, 255));
         btnConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnConsultar.setText("Consultar Selección");
+        btnConsultar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         btnConsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnConsultar.setOpaque(true);
         btnConsultar.setPreferredSize(new java.awt.Dimension(170, 50));
@@ -226,17 +218,14 @@ public class Almacen extends javax.swing.JPanel {
                 btnConsultarMouseExited(evt);
             }
         });
-        operaciones.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 138, -1, 40));
-
-        jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator3.setPreferredSize(null);
-        operaciones.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 178, 170, 3));
+        botones.add(btnConsultar);
 
         btnNuevo.setBackground(new java.awt.Color(73, 197, 147));
         btnNuevo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         btnNuevo.setForeground(new java.awt.Color(255, 255, 255));
         btnNuevo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnNuevo.setText("Nuevo Producto");
+        btnNuevo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         btnNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNuevo.setOpaque(true);
         btnNuevo.setPreferredSize(new java.awt.Dimension(170, 50));
@@ -248,17 +237,14 @@ public class Almacen extends javax.swing.JPanel {
                 btnNuevoMouseExited(evt);
             }
         });
-        operaciones.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 187, -1, 40));
-
-        jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator6.setPreferredSize(null);
-        operaciones.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 227, 170, 3));
+        botones.add(btnNuevo);
 
         btnModificar.setBackground(new java.awt.Color(73, 197, 147));
         btnModificar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         btnModificar.setForeground(new java.awt.Color(255, 255, 255));
         btnModificar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnModificar.setText("Modificar Selección");
+        btnModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnModificar.setOpaque(true);
         btnModificar.setPreferredSize(new java.awt.Dimension(170, 50));
@@ -270,21 +256,14 @@ public class Almacen extends javax.swing.JPanel {
                 btnModificarMouseExited(evt);
             }
         });
-        operaciones.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 236, -1, 40));
-
-        jSeparator7.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator7.setPreferredSize(null);
-        operaciones.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 276, 170, 3));
-
-        jSeparator8.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator8.setPreferredSize(null);
-        operaciones.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 170, 3));
+        botones.add(btnModificar);
 
         btnEliminar.setBackground(new java.awt.Color(73, 197, 147));
         btnEliminar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnEliminar.setText("Eliminar Selección");
+        btnEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.setOpaque(true);
         btnEliminar.setPreferredSize(new java.awt.Dimension(170, 50));
@@ -296,9 +275,11 @@ public class Almacen extends javax.swing.JPanel {
                 btnEliminarMouseExited(evt);
             }
         });
-        operaciones.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 170, 40));
+        botones.add(btnEliminar);
 
-        margen.add(operaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 170, 360));
+        operaciones.add(botones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 160, 260));
+
+        margen.add(operaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 160, 360));
 
         menuVentas.add(margen);
 
@@ -358,6 +339,7 @@ public class Almacen extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel botones;
     private javax.swing.JLabel btnBuscar;
     private javax.swing.JLabel btnConsultar;
     private javax.swing.JLabel btnEliminar;
@@ -372,14 +354,8 @@ public class Almacen extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JPanel margen;
     private javax.swing.JPanel menuVentas;
     private javax.swing.JPanel operaciones;

@@ -10,6 +10,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,6 +50,7 @@ public class WSBiblioteca {
                 .uri(URI.create(this.wsEndpoint+"/"+path))
                 .header("Content-Type", "application/json")
                 .method(method.toUpperCase(), BodyPublishers.ofString(body))
+                .timeout(Duration.ofSeconds(5))
                 .build();
     }
     
@@ -64,7 +66,13 @@ public class WSBiblioteca {
                 default:
                     return new WSResponse(Integer.toString(response.statusCode()), "Hubo un error con el servidor. Revisar data para más detalles.", response.toString(), "Error");
             }   
-        } catch (IOException | InterruptedException ex) {
+        } catch (java.net.http.HttpConnectTimeoutException ex) {
+            Logger.getLogger(WSBiblioteca.class.getName()).log(Level.SEVERE, null, ex);
+            return new WSResponse(Integer.toString(500), "No se ha podido establecer comunicación con el servidor. Vuelva a intentar.", ex.getMessage(), "Error");
+        } catch (IOException ex){
+            Logger.getLogger(WSBiblioteca.class.getName()).log(Level.SEVERE, null, ex);
+            return new WSResponse(Integer.toString(500), "Hubo errores al enviar los datos. Verifique la sintaxis.", ex.getMessage(), "Error");
+        } catch(InterruptedException ex){
             Logger.getLogger(WSBiblioteca.class.getName()).log(Level.SEVERE, null, ex);
             return new WSResponse(Integer.toString(500), "Hubo un error con el servidor. Revisar data para más detalles.", ex.getMessage(), "Error");
         }

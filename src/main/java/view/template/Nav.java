@@ -27,6 +27,10 @@ public class Nav extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         btnAlmacen = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        nombres = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(22, 33, 53));
         setForeground(new java.awt.Color(255, 255, 255));
@@ -103,6 +107,29 @@ public class Nav extends javax.swing.JPanel {
         jSeparator2.setPreferredSize(new java.awt.Dimension(50, 5));
         menus.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 170, 2));
 
+        nombres.setOpaque(false);
+        nombres.setLayout(new java.awt.GridLayout(3, 1, 25, 5));
+
+        jLabel3.setFont(new java.awt.Font("Roboto", 3, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Autores");
+        nombres.add(jLabel3);
+
+        jLabel1.setFont(new java.awt.Font("Roboto", 2, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Luis Arturo Tenorio López");
+        nombres.add(jLabel1);
+
+        jLabel2.setFont(new java.awt.Font("Roboto", 2, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Alan Marcial Marín");
+        nombres.add(jLabel2);
+
+        menus.add(nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 170, 70));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,7 +149,7 @@ public class Nav extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(titulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(menus, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE))
+                .addComponent(menus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -183,10 +210,14 @@ public class Nav extends javax.swing.JPanel {
     private javax.swing.JLabel btnAlmacen;
     private javax.swing.JLabel btnVentas;
     private javax.swing.JLabel icon;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JPanel menus;
+    private javax.swing.JPanel nombres;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }
