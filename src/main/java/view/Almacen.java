@@ -1,5 +1,7 @@
 package view;
 
+//almacen listo al 100%
+
 public class Almacen extends javax.swing.JPanel {
 
     public Almacen() {
