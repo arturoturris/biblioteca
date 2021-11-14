@@ -68,11 +68,9 @@ public class Ventas extends javax.swing.JPanel {
         categoria = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         cmbBoxCategoria = new javax.swing.JComboBox<>();
-        jSeparator1 = new javax.swing.JSeparator();
+        botones = new javax.swing.JPanel();
         btnBuscar = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
         btnConsultar = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
         tblProductos = new view.template.Tabla();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -140,7 +138,7 @@ public class Ventas extends javax.swing.JPanel {
 
         datosUsuario.add(contrasena);
 
-        margen.add(datosUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, 210));
+        margen.add(datosUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 160, 210));
 
         operaciones.setOpaque(false);
 
@@ -162,14 +160,15 @@ public class Ventas extends javax.swing.JPanel {
         cmbBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libros", "Mangas", "Comics", "Articulos" }));
         categoria.add(cmbBoxCategoria);
 
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator1.setPreferredSize(null);
+        botones.setOpaque(false);
+        botones.setLayout(new java.awt.GridLayout(5, 1, 0, 5));
 
         btnBuscar.setBackground(new java.awt.Color(73, 197, 147));
         btnBuscar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnBuscar.setText("Buscar");
+        btnBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuscar.setOpaque(true);
         btnBuscar.setPreferredSize(new java.awt.Dimension(170, 50));
@@ -181,15 +180,14 @@ public class Ventas extends javax.swing.JPanel {
                 btnBuscarMouseExited(evt);
             }
         });
-
-        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator2.setPreferredSize(null);
+        botones.add(btnBuscar);
 
         btnConsultar.setBackground(new java.awt.Color(73, 197, 147));
         btnConsultar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         btnConsultar.setForeground(new java.awt.Color(255, 255, 255));
         btnConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnConsultar.setText("Consultar Selección");
+        btnConsultar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         btnConsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnConsultar.setOpaque(true);
         btnConsultar.setPreferredSize(new java.awt.Dimension(170, 50));
@@ -201,29 +199,20 @@ public class Ventas extends javax.swing.JPanel {
                 btnConsultarMouseExited(evt);
             }
         });
-
-        jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator3.setPreferredSize(null);
+        botones.add(btnConsultar);
 
         javax.swing.GroupLayout operacionesLayout = new javax.swing.GroupLayout(operaciones);
         operaciones.setLayout(operacionesLayout);
         operacionesLayout.setHorizontalGroup(
             operacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(operacionesLayout.createSequentialGroup()
-                .addComponent(categoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(operacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(categoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, operacionesLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botones, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(operacionesLayout.createSequentialGroup()
-                .addGroup(operacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, operacionesLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(operacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         operacionesLayout.setVerticalGroup(
             operacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,19 +221,11 @@ public class Ventas extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addComponent(botones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        margen.add(operaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 170, 290));
+        margen.add(operaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 160, 290));
 
         menuVentas.add(margen);
 
@@ -274,6 +255,7 @@ public class Ventas extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel botones;
     private javax.swing.JLabel btnBuscar;
     private javax.swing.JLabel btnConsultar;
     private javax.swing.JPanel categoria;
@@ -285,9 +267,6 @@ public class Ventas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JPanel margen;
