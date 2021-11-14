@@ -187,6 +187,34 @@ public class App {
             }
         });
         
+        //ELIMINAR PRODUCTO
+        almacenView.getBtnEliminar().addMouseListener(new MouseAdapter(){
+            public void mouseClicked(MouseEvent e){
+                String user = almacenView.getUsuario();
+                String pass = almacenView.getContrasena();
+                String isbn = almacenView.getSelectedISBN();
+                WSResponse response = client.deleteProd(user, pass, isbn);
+                String status = response.getStatus().toLowerCase();
+                
+                if(status.equals("success")){
+                    JOptionPane.showMessageDialog(
+                            mainFrame,
+                            response.getMessage() + "\nEl campo ha sido eliminado con éxito el: " + response.getData(),
+                            response.getStatus().toUpperCase() + " " + response.getCode(),
+                            JOptionPane.WARNING_MESSAGE
+                    );
+                    displayAlmacen();
+                } else {
+                    JOptionPane.showMessageDialog(
+                            mainFrame,
+                            response.getMessage(),
+                            response.getStatus().toUpperCase() + " " + response.getCode(),
+                            JOptionPane.WARNING_MESSAGE
+                    );
+                }
+            }
+        });
+        
         //CONSULTAR DETALLES
         almacenView.getBtnConsultar().addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e){
@@ -238,6 +266,13 @@ public class App {
         almacenView.getBtnNuevo().addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e){
                 displayFormularioNuevoProducto();
+            }
+        });
+        
+        //ACTUALIZAR PRODUCTO
+        almacenView.getBtnModificar().addMouseListener(new MouseAdapter(){
+            public void mouseClicked(MouseEvent e){
+                displayFormularioActualizarProducto(almacenView);
             }
         });
     
@@ -296,6 +331,95 @@ public class App {
             }
         });;
     }
+    
+    
+    public void displayFormularioActualizarProducto(Almacen almacenView){
+                Formulario formularioView = new Formulario();
+                formularioView.setTitulo("Actualizar Producto");
+                formularioView.desactivarISBN();
+                String user = almacenView.getUsuario();
+                String pass = almacenView.getContrasena();
+                String isbn = almacenView.getSelectedISBN();
+                WSResponse response = client.getDetails(user, pass, isbn);
+                String status = response.getStatus().toLowerCase();
+                
+                if(status.equals("success")){
+                    
+                    HashMap<String,Object> detalles = WSBiblioteca.jsonToMap(response.getData()); 
+                    formularioView.setTextFieldISBN((String)detalles.get("ISBN"));
+                    formularioView.setTextFieldNombre((String)detalles.get("Nombre"));
+                    formularioView.setTextFieldAutor((String)detalles.get("Autor"));
+                    formularioView.setTextFieldEditorial((String)detalles.get("Editorial"));
+                    Double precio = (Double)detalles.get("Precio");
+                    formularioView.setSpnPrecio(precio.floatValue());
+                    formularioView.setSpnAno((int)detalles.get("Fecha"));
+                    formularioView.setCheckBoxDescuento((boolean)detalles.get("Descuento"));
+                    mainFrame.addToScene(formularioView);
+                    SetEventosFormularioActualizarProducto(formularioView);
+                    
+                } else {
+                    JOptionPane.showMessageDialog(
+                            mainFrame,
+                            response.getMessage(),
+                            response.getStatus().toUpperCase() + " " + response.getCode(),
+                            JOptionPane.WARNING_MESSAGE
+                    );
+                }
+            
+    }
+    
+    
+    public void SetEventosFormularioActualizarProducto (Formulario formularioView) {
+     
+        formularioView.getBtnCancelar().addMouseListener(new MouseAdapter(){
+            public void mouseClicked(MouseEvent e){
+                displayAlmacen();
+            }
+        });
+        
+        //ACTUALIZAR PRODUCTO
+        formularioView.getBtnAceptar().addMouseListener(new MouseAdapter(){
+            public void mouseClicked(MouseEvent e){
+                String user = formularioView.getUsuario();
+                String pass = formularioView.getContrasena();
+                String isbn = formularioView.getISBN();
+                HashMap<String,Object> detalles = new HashMap<>();
+                WSResponse response;
+                String status;
+                
+                detalles.put("Autor", formularioView.getAutor());
+                detalles.put("Descuento", formularioView.getDescuento());
+                detalles.put("Editorial", formularioView.getEditorial());
+                detalles.put("Fecha", formularioView.getAno());
+                detalles.put("ISBN", formularioView.getISBN());
+                detalles.put("Nombre", formularioView.getNombre());
+                detalles.put("Precio", formularioView.getPrecio());
+                response = client.updateProd(user, pass, isbn, detalles);
+                status = response.getStatus().toLowerCase();
+                
+                if(status.equals("success")){
+                    JOptionPane.showMessageDialog(
+                            mainFrame,
+                            response.getMessage() + "\nActualización realizada el: " + response.getData(),
+                            response.getStatus().toUpperCase() + " " + response.getCode(),
+                            JOptionPane.WARNING_MESSAGE
+                    );
+                    displayAlmacen();
+                } else {
+                    JOptionPane.showMessageDialog(
+                            mainFrame,
+                            response.getMessage(),
+                            response.getStatus().toUpperCase() + " " + response.getCode(),
+                            JOptionPane.WARNING_MESSAGE
+                    );
+                }
+            }
+        });;
+     
+    }
+    
+    
+    
     
     public static void main(String[] args){
         App launcher = new App("https://wsbiblioteca.azurewebsites.net/");
