@@ -99,7 +99,7 @@ public class WSBiblioteca {
     }
     
     public WSResponse updateProd(String user, String pass, String isbn, HashMap<String,Object> detalles) {
-        String path = "/updateProd" + isbn;
+        String path = "/updateProd/" + isbn;
         HashMap<String,Object> body = new HashMap<String,Object>();
         
         body.put("user", user);
@@ -110,7 +110,7 @@ public class WSBiblioteca {
     }
     
     public WSResponse deleteProd(String user, String pass, String isbn) {
-        String path = "/deleteProd" + isbn;
+        String path = "/deleteProd/" + isbn;
         HashMap<String,Object> body = new HashMap<String,Object>();
         
         body.put("user", user);
