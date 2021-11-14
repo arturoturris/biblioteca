@@ -32,6 +32,7 @@ public class Formulario extends javax.swing.JPanel {
         return textFieldISBN.getText();
     }
     
+    
     public String getUsuario(){
         return textFieldUsuario.getText();
     }
@@ -60,16 +61,22 @@ public class Formulario extends javax.swing.JPanel {
         return cmbBoxCategoria.getItemAt(cmbBoxCategoria.getSelectedIndex()).toLowerCase();
     }
     
-    public void setCheckBoxDescuento(JCheckBox checkBoxDescuento) {
-        this.checkBoxDescuento = checkBoxDescuento;
+    /*public String getDetalles(){
+        return cmbBoxDetalles.getItemAT (cmbBoxDetalles.getSelectedIndex()).toLowerCase();
+    }*/
+    
+    //Corrección de los sets
+    
+    public void setCheckBoxDescuento(boolean checkBoxDescuento) {
+        this.checkBoxDescuento.setSelected(checkBoxDescuento);
     }
 
-    public void setSpnAno(JSpinner spnAno) {
-        this.spnAno = spnAno;
+    public void setSpnAno(int spnAno) {
+        this.spnAno.setValue(spnAno);
     }
 
-    public void setSpnPrecio(JSpinner spnPrecio) {
-        this.spnPrecio = spnPrecio;
+    public void setSpnPrecio(float spnPrecio) {
+        this.spnPrecio.setValue(spnPrecio);
     }
 
     public void setTextFieldAutor(String textFieldAutor) {
