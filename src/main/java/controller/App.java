@@ -193,6 +193,17 @@ public class App {
                 String user = almacenView.getUsuario();
                 String pass = almacenView.getContrasena();
                 String isbn = almacenView.getSelectedISBN();
+                
+                if(isbn == null){
+                    JOptionPane.showMessageDialog(
+                            mainFrame,
+                            "No ha seleccionado un libro para eliminar.",
+                            "Error de selección.",
+                            JOptionPane.WARNING_MESSAGE
+                    );
+                    return;
+                }
+                
                 WSResponse response = client.deleteProd(user, pass, isbn);
                 String status = response.getStatus().toLowerCase();
                 
@@ -340,6 +351,17 @@ public class App {
                 String user = almacenView.getUsuario();
                 String pass = almacenView.getContrasena();
                 String isbn = almacenView.getSelectedISBN();
+                
+                if(isbn == null){
+                    JOptionPane.showMessageDialog(
+                            mainFrame,
+                            "No ha seleccionado un libro para modificar.",
+                            "Error de selección.",
+                            JOptionPane.WARNING_MESSAGE
+                    );
+                    return;
+                }
+                
                 WSResponse response = client.getDetails(user, pass, isbn);
                 String status = response.getStatus().toLowerCase();
                 
